@@ -1,11 +1,20 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { Link } from 'react-router-dom'
+import {Nav, Navbar} from 'react-bootstrap';
+import './index.css'
 
 export default class Header extends Component {
   render() {
     return (
-      <div>
-        <h2> Header </h2>
-      </div>
+        <Fragment>
+        <Navbar bg="primary" variant="dark">
+          <Navbar.Brand href="#home">MyProject Name</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Link class="header-link" to="/">Sign In</Link>
+            <Link class="header-link" to="/sign-up">Sign Up</Link>
+          </Nav>
+        </Navbar>
+      </Fragment>
     );
   }
 }

@@ -4,7 +4,7 @@ import SignIn from "./sign-in";
 import SignUp from "./sign-up";
 import NotFoundPage from './not-found-page';
 import Header from './header';
-import Footer from './footer';
+// import Footer from './footer';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route path='*' exact={true} component={NotFoundPage} />
       </Switch>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
