@@ -1,12 +1,13 @@
 // import actions from "./actions";
 
-const logUp = () => {
-  // return dispatch => {
-  //   dispatch(actions.increaseCounter());
-  // };
-  // actions.increaseCounter();
+const signUp = () => {
+  debugger
+  return async dispatch => {
+    //   dispatch(actions.increaseCounter());
+    return true;
+  };
 };
 
 export default {
-  logUp
+  signUp
 };

@@ -1,20 +1,59 @@
 import React, { Component, Fragment } from "react";
-import { Link } from 'react-router-dom'
-import {Nav, Navbar} from 'react-bootstrap';
-import './index.css'
+import { Link } from "react-router-dom";
+import { Nav, Navbar } from "react-bootstrap";
+import { connect } from "react-redux";
+import { signInOperations } from "../../../state/ducks/sign-in";
 
-export default class Header extends Component {
+import "./index.css";
+
+class Header extends Component {
+  logout = () => {
+    const { logout } = this.props;
+    logout();
+  };
   render() {
+    const { isUserAuthenticated } = this.props;
     return (
-        <Fragment>
+      <Fragment>
         <Navbar bg="primary" variant="dark">
           <Navbar.Brand href="#home">MyProject Name</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Link className="header-link" to="/">Sign In</Link>
-            <Link className="header-link" to="/sign-up">Sign Up</Link>
-          </Nav>
+          {!isUserAuthenticated && (
+            <Nav className="mr-auto">
+              <Link className="header-link" to="/">
+                Sign In
+              </Link>
+              <Link className="header-link" to="/sign-up">
+                Sign Up
+              </Link>
+            </Nav>
+          )}
+          {isUserAuthenticated && (
+            <Nav className="mr-auto">
+              <Link className="header-link" to="/dashboard">
+                Dashboard
+              </Link>
+              <Link className="header-link" to="#" onClick={this.logout}>
+                Log Out
+              </Link>
+            </Nav>
+          )}
         </Navbar>
       </Fragment>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    isUserAuthenticated: state.signInState.signIn.isUserAuthenticated
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(signInOperations.logOut())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);

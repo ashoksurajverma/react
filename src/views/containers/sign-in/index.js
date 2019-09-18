@@ -35,7 +35,7 @@ class SignIn extends Component {
         password: ""
       });
       if (data) {
-        this.props.history.push("/sign-up");
+        this.props.history.push("/dashboard");
       } else {
         this.setState({ errorMessage: "Email and password are not correct" });
       }

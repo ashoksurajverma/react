@@ -2,7 +2,8 @@ import { combineReducers } from "redux";
 import types  from './types';
 
 const initialState = {
-  currentUser: []
+  currentUser: [],
+  isUserAuthenticated: false,
 };
 
 const signIn = (state = initialState, action) => {
@@ -12,7 +13,10 @@ const signIn = (state = initialState, action) => {
       return Object.assign({}, state, {
         currentUser: action.data,
       });
-
+    case types.SET_USER_AUTHENTICATED:
+      return Object.assign({}, state, {
+        isUserAuthenticated: action.payload,
+      })
     default:
       return state;
   }
