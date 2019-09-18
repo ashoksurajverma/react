@@ -1,36 +1,89 @@
 import React, { Component } from "react";
-import './index.css';
+import { connect } from "react-redux";
+import { signInOperations } from "../../../state/ducks/sign-in";
 
-export default class SignIn extends Component {
+import "./index.css";
+import { sign } from "crypto";
+
+class SignIn extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      errorMessage: ""
+    };
+  }
+
+  handlechange = event => {
+    const { errorMessage } = this.state;
+    if (errorMessage) {
+      this.setState({ errorMessage: "" });
+    }
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { email, password } = this.state;
+    const { signIn } = this.props;
+    signIn({ email, password }).then(data => {
+      this.setState({
+        email: "",
+        password: ""
+      });
+      if (data) {
+        this.props.history.push("/sign-up");
+      } else {
+        this.setState({ errorMessage: "Email and password are not correct" });
+      }
+    });
+  };
+
   render() {
+    const { email, password, errorMessage } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <form>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Email address</label>
                 <input
+                  name="email"
                   type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
+                  className="form-control"
+                  id="email"
                   placeholder="Enter email"
+                  value={email}
+                  onChange={this.handlechange}
                 />
-                <small id="emailHelp" class="form-text text-muted">
+                <small id="emailHelp" className="form-text text-muted">
                   We'll never share your email with anyone else.
                 </small>
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">Password</label>
                 <input
+                  name="password"
                   type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
+                  className="form-control"
+                  id="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={this.handlechange}
                 />
               </div>
-              <button type="submit" class="btn btn-primary">
+              {errorMessage && (
+                <div className="error-message">{errorMessage}</div>
+              )}
+              <button
+                type="submit"
+                className="btn btn-primary"
+                disabled={email === "" || password === ""}
+              >
                 Submit
               </button>
             </form>
@@ -40,3 +93,16 @@ export default class SignIn extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: data => dispatch(signInOperations.logIn(data))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);

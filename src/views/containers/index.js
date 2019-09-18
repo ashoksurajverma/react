@@ -4,6 +4,8 @@ import SignIn from "./sign-in";
 import SignUp from "./sign-up";
 import NotFoundPage from './not-found-page';
 import Header from './header';
+import Dashboard from './dashboard';
+
 // import Footer from './footer';
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route path='*' exact={true} component={NotFoundPage} />
       </Switch>
       </div>
