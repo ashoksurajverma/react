@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import './index.css';
+import Product from '../../components/product';
+
+import "./index.css";
 
 class ProductList extends Component {
   render() {
@@ -7,7 +9,12 @@ class ProductList extends Component {
       <div className="container">
         <div className="row">
           <div className="col md 12">
-            <h1>This a product list page</h1>
+            <div>
+              <Product />
+              <Product />
+              <Product />
+              <Product />
+            </div>
           </div>
         </div>
       </div>
