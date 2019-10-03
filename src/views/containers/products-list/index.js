@@ -8,11 +8,13 @@ class ProductList extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col md 12">
+          <div className="col-md-06">
             <div>
               <Product />
-              <Product />
-              <Product />
+            </div>
+          </div>
+          <div className="col-md-06">
+            <div>
               <Product />
             </div>
           </div>

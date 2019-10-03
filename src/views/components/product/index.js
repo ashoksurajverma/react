@@ -1,33 +1,10 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { Card, Button } from "react-bootstrap";
 
-import { Card, Button, Modal } from "react-bootstrap";
+import './index.css';
 
-function DeleteProductModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Delete the Product
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>
-          Are you sure want to delete this Product.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-        <Button onClick={props.onHide}>Delete</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
+import DeleteProductModal from './ProductModal';
 
 class Product extends Component {
   state = {
@@ -42,7 +19,14 @@ class Product extends Component {
 
   handleEdit = () => {
     const { history: { push }} = this.props;
-    push('/product-edit')
+    // push('/product-edit')
+    push({
+      pathname: '/product-edit',
+      state: {
+        productTitle: 'product title',
+        description: 'this is the description of product'
+      }
+    })
   }
 
   render() {
@@ -57,7 +41,7 @@ class Product extends Component {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
-            <Button variant="primary" onClick={() => this.handleEdit()}>Edit</Button>
+            <Button variant="primary" className="margin-right" onClick={() => this.handleEdit()}>Edit</Button>
             <Button variant="primary" onClick={() => this.setModalShow(true)}>Delete</Button>
           </Card.Body>
         </Card>

@@ -25,6 +25,12 @@ class Header extends Component {
               <Link className="header-link" to="/sign-up">
                 Sign Up
               </Link>
+              <Link className="header-link" to="/product-add">
+                Add Product
+              </Link>
+              <Link className="header-link" to="/product-list">
+                Product List
+              </Link>
             </Nav>
           )}
           {isUserAuthenticated && (

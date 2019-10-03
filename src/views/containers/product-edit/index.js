@@ -4,7 +4,22 @@ import ProductEditForm from "../../components/product-edit";
 import "./index.css";
 
 class ProductEdit extends Component {
+  state = {
+    data: {}
+  }
+  componentDidMount() {
+    const data = this.props.location.state;
+    if(data) {
+      debugger
+      this.setState({
+        data
+      });
+    }
+  }
+
   render() {
+    console.log("========================", this.state.data);
+    const { data } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -14,7 +29,7 @@ class ProductEdit extends Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-            <ProductEditForm />
+            <ProductEditForm data={data}/>
           </div>
         </div>
       </div>
