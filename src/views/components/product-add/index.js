@@ -1,14 +1,16 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 
-const renderTextArea = ({input, meta: { touched, error, warning }}) => (
+const renderTextArea = ({ input, meta: { touched, error, warning } }) => (
+  <div>
+    <label>Product Description</label>
     <div>
-        <label>Product Description</label>
-        <div>
-            <textarea {...input} placeholder="Content" rows="10" cols="40"/>
-            {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-        </div>
+      <textarea {...input} placeholder="Content" rows="10" cols="40" />
+      {touched &&
+        ((error && <span>{error}</span>) ||
+          (warning && <span>{warning}</span>))}
     </div>
+  </div>
 );
 
 const ProductAddForm = props => {
@@ -29,7 +31,9 @@ const ProductAddForm = props => {
         <Field name="description" component={renderTextArea} />
       </div>
 
-      <button className="btn btn-primary" type="submit">Submit</button>
+      <button className="btn btn-primary" type="submit">
+        Submit
+      </button>
     </form>
   );
 };
