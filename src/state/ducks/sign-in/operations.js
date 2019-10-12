@@ -52,10 +52,10 @@ const logIn = data => {
       url
     }
     axios(options).then((res) => {
-      // debugger
+      debugger
     })
     .catch(error => {
-      // debugger
+      debugger
     })
     // axios.post('http://avatartechworld.com/rest/auth/org_login', config, qs.stringify(requestBody))
     // .then(function (response) {

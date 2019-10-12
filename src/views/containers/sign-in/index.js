@@ -9,6 +9,7 @@ class SignIn extends Component {
   handleSubmit = signInData => {
     const { signIn } = this.props;
     signIn(signInData).then(data => {
+      debugger
       if (data) {
         this.props.history.push("/dashboard");
       }
