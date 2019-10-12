@@ -10,7 +10,6 @@ class ProductEdit extends Component {
   componentDidMount() {
     const data = this.props.location.state;
     if(data) {
-      debugger
       this.setState({
         data
       });

@@ -22,7 +22,6 @@ class ProductEditForm extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
   }
 
   render() {

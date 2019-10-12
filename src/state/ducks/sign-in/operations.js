@@ -9,7 +9,6 @@ const mockData = [
 ];
 
 const logIn = data => {
-  debugger
   const config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -38,10 +37,10 @@ const logIn = data => {
     //   },
     //   body: requestBody
     // }).then((response) => {
-    //   debugger
+    // 
     // })
     // .catch((error) => {
-    //   debugger
+    //
     // })
     const url = 'http://avatartechworld.com/rest/auth/org_login';
 
@@ -52,19 +51,16 @@ const logIn = data => {
       url
     }
     axios(options).then((res) => {
-      debugger
     })
     .catch(error => {
-      debugger
     })
     // axios.post('http://avatartechworld.com/rest/auth/org_login', config, qs.stringify(requestBody))
     // .then(function (response) {
-    //   debugger
+    //
     //   // handle success
     //   console.log(response);
     // })
     // .catch(function (error) {
-    //   debugger
     //   // handle error
     //   console.log(error);
     // })
